@@ -1,0 +1,58 @@
+package ${package.Controller};
+
+import ${package.Entity};
+import ${package.Impl};
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+
+/**
+ * <p>
+ * ${tablecomment}  前端控制器
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+
+@RestController
+public class ${table.controllerName}{
+
+    @Autowired
+    private ${entity}ServiceImpl ${table.entityPath}Service;
+
+    @RequestMapping("/get${entity}")
+    public List<${entity}> get${entity}(){
+        return ${table.entityPath}Service.list(null);
+    }
+
+    @RequestMapping("del${entity}")
+    public int del${entity}(){
+        return ${table.entityPath}Service.deleteBatchIds(Collections.singleton(1));
+    //        return plusMapper.selectList(null);
+        }
+
+    @RequestMapping("selectone${entity}")
+    public List<${entity}> selectone${entity}(){
+        return ${table.entityPath}Service.selectBatchIds(Collections.singleton(3));
+    }
+    @RequestMapping("updata${entity}")
+    public int updata${entity}(){
+    ${entity} entity = new ${entity}();
+        entity.setName("nam");
+        entity.setId(3);
+        return ${table.entityPath}Service.updateById(plus);
+    }
+
+    @RequestMapping("insert${entity}")
+    public int insert${entity}(){
+        ${entity} entity = new ${entity}();
+        entity.setName("insert");
+        return ${table.entityPath}Service.insert(entity);
+    }
+
+}
+

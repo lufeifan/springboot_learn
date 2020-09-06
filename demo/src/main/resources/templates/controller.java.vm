@@ -1,0 +1,33 @@
+package ${package.Controller};
+
+import ${package.Entity}.${entity};
+import ${package.ServiceImpl}.${entity}ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+
+/**
+ * <p>
+ * ${tablecomment}  前端控制器
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+
+@RestController
+public class ${table.controllerName}{
+
+    @Autowired
+    private ${entity}ServiceImpl ${table.entityPath}Service;
+
+    @RequestMapping("/get${entity}")
+    public List<${entity}> get${entity}(){
+        return ${table.entityPath}Service.list(null);
+    }
+
+}
+

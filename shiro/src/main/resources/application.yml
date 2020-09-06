@@ -1,0 +1,9 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    name: test
+    url: jdbc:mysql://127.0.0.1:3307/springboot?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root

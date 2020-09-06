@@ -1,0 +1,33 @@
+package ${package.Service};
+
+
+
+import org.springframework.stereotype.Service;
+import com.lzn.mybatisplus.codegenerator.dao.${table.mapperName};
+import com.lzn.mybatisplus.codegenerator.utils.entity.GridDataModel;
+import com.lzn.mybatisplus.codegenerator.utils.entity.OmuiPage;
+import com.lzn.mybatisplus.codegenerator.export.${table.entityName}VO;
+
+import javax.annotation.Resource;
+import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+
+/**
+ * <p>
+ * $!{tablecomment} 服务类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Service
+public class ${table.serviceName} {
+
+@Resource
+private ${table.mapperName} ${table.entityPath}Dao;
+
+}

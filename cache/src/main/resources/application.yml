@@ -1,0 +1,49 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    name: test
+    url: jdbc:mysql://127.0.0.1:3307/test?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+
+  redis:
+    host: localhost
+    database: 0
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 0
+    timeout: 3000ms
+
+    key:
+      prefix:
+        authCode: "portal:authCode:"
+      expire:
+        authCode: 120
+
+# mybatis config
+mybatis-plus:
+  mapper-locations: classpath:mappers/*.xml
+  type-aliases-package: com.cache.demo.model
+  global-config:
+    db-config:
+      id-type: auto
+      #日志
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+config:
+  jwt:
+    # 加密密钥
+    secret: abcdefg1234567
+    # token有效时长
+    expire: 3600
+    # header 名称
+    header: token

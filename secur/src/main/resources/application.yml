@@ -1,0 +1,47 @@
+server:
+  port: 9000
+
+spring:
+  datasource:
+    name: test
+    url: jdbc:mysql://127.0.0.1:3307/test?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+
+  redis:
+    host: localhost
+    database: 0
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 0
+    timeout: 3000ms
+
+    key:
+      prefix:
+        authCode: "portal:authCode:"
+      expire:
+        authCode: 120
+
+  cache:
+    type: redis
+
+mongodb:
+  host: localhost
+  port: 27017
+  database: test
+
+data:
+  elasticsearch:
+    repositories:
+      enabled: true
+    cluster-nodes: 127.0.0.1:9200
+    cluster-name: elasticsearch
+
+
+
+
