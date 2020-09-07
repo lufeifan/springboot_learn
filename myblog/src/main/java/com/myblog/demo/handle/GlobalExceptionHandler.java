@@ -1,30 +1,34 @@
 package com.myblog.demo.handle;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.myblog.demo.comment.JsonReturn;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 //全局异常捕获
-@ControllerAdvice
+@RestControllerAdvice
 public class GlobalExceptionHandler {
-
+    /**
+     * MethodArgumentNotValidException 异常处理
+     * @param e
+     * @return
+     */
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
-    public void handleMethodArgumentNotValidException(MethodArgumentNotValidException e,HttpServletResponse response) throws IOException {
-        System.out.println(e.getMessage());
-        Map<String, String> map = new HashMap<>();
-        map.put("msg",e.getLocalizedMessage());
-        response.setContentType("application/json;charset=utf-8");
-        PrintWriter out = response.getWriter();
-        out.write(new ObjectMapper().writeValueAsString(map));
-        out.flush();
-        out.close();
+    public JsonReturn handleMethodArgumentNotValidException(MethodArgumentNotValidException e){
+        BindingResult bindingResult = e.getBindingResult();
+        ObjectError objectError = bindingResult.getAllErrors().stream().findFirst().get();
+        JsonReturn jsonReturn = new JsonReturn();
+        return jsonReturn.buildFailure(objectError.getDefaultMessage());
+    }
+
+    @ExceptionHandler(value = HttpMessageNotReadableException.class)
+    public JsonReturn handleMethodArgumentNotValidException(HttpMessageNotReadableException e){
+        String message = e.getLocalizedMessage();
+//        ObjectError objectError = bindingResult.getAllErrors().stream().findFirst().get();
+        JsonReturn jsonReturn = new JsonReturn();
+        return jsonReturn.buildFailure("not a valid Integer value");
     }
 }
