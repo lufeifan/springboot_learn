@@ -48,11 +48,11 @@ public class BannerController {
      * @param id
      * @return
      */
-    @RequestMapping("/del/{id}")
-    public JsonReturn delbannner(@PathVariable String id){
-        JsonReturn jsonReturn = new JsonReturn();
-        return jsonReturn.buildSuccess(bannerService.removeById(id));
-    }
+//    @RequestMapping("/del/{id}")
+//    public JsonReturn delbannner(@PathVariable String id){
+//        JsonReturn jsonReturn = new JsonReturn();
+//        return jsonReturn.buildSuccess(bannerService.removeById(id));
+//    }
 
     @RequestMapping("/update/{id}")
     public JsonReturn updatebannner(@PathVariable String id,@RequestParam(value = "url") String url,

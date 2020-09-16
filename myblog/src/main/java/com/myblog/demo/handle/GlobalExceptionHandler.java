@@ -24,10 +24,14 @@ public class GlobalExceptionHandler {
         return jsonReturn.buildFailure(objectError.getDefaultMessage());
     }
 
+    /**
+     * 传入非数字
+     * @param e
+     * @return
+     */
     @ExceptionHandler(value = HttpMessageNotReadableException.class)
     public JsonReturn handleMethodArgumentNotValidException(HttpMessageNotReadableException e){
         String message = e.getLocalizedMessage();
-//        ObjectError objectError = bindingResult.getAllErrors().stream().findFirst().get();
         JsonReturn jsonReturn = new JsonReturn();
         return jsonReturn.buildFailure("not a valid Integer value");
     }
