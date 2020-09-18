@@ -7,6 +7,11 @@ spring:
     url: jdbc:mysql://127.0.0.1:3307/vueblog?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
     username: root
     password: root
+  mvc:
+    view:
+      suffix: classpath:/templates/
+
+#      prefix: .html
 
 # mybatis config
 mybatis-plus:

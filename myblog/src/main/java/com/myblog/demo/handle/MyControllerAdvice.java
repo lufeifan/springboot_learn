@@ -12,6 +12,8 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
+import javax.servlet.http.HttpServletResponse;
+
 @RestControllerAdvice
 public class MyControllerAdvice implements ResponseBodyAdvice<Object> {
     @Override
