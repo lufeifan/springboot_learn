@@ -2,9 +2,7 @@ package com.shirojwt.demo.config;
 
 import com.shirojwt.demo.jwt.JwtFilter;
 import com.shirojwt.demo.shiro.MyRealm;
-import org.apache.shiro.mgt.DefaultSecurityManager;
-import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
-import org.apache.shiro.mgt.DefaultSubjectDAO;
+
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
